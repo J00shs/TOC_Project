@@ -1,13 +1,15 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /*
 Class containing the content of the application.
  */
-public class Menu extends JPanel {
+public class MainMenu extends JPanel {
 
-    public Menu() {
+    public MainMenu() {
         setBorder(new EmptyBorder(10, 10, 10, 10)); //Creates an empty border that takes up space.
         setLayout(new GridBagLayout());//Sets the layout manager our JPanel object will use.
 
@@ -28,12 +30,34 @@ public class Menu extends JPanel {
 
         JPanel deButtons = new JPanel(new GridBagLayout()); //Creates buttons using a GridBagLayout Manager
         //The following code creates the buttons for the main menu
-        deButtons.add(new JButton("Start"),gbc);
-        deButtons.add(new JButton("How To Play"),gbc);
+        JButton start = new JButton("Start");
+        JButton howTo = new JButton("How To Play");
+        deButtons.add(start,gbc);
+        deButtons.add(howTo,gbc);
+        start.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                startGameButton button  = new  startGameButton();
+                button.setTitle("Start Game");
+                button.setSize(700,500);
+                button.setLocationRelativeTo(null);
+                button.setResizable(false);
 
+                button.setVisible(true);
+                button.add(new gameCode());
+
+            }
+        });
 
         gbc.weighty = 1;
         add(deButtons,gbc); //Add the buttons to the window
 
     }
+
+
+}
+//An empty class that used to hold the window for the actual game
+//DO NOT DELETE!
+ class startGameButton extends JFrame {
+
 }
