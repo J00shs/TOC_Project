@@ -39,12 +39,12 @@ public class MainMenu extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 startGameButton button  = new  startGameButton();
                 button.setTitle("Start Game");
-                button.setSize(700,500);
+                button.setSize(300,300);
                 button.setLocationRelativeTo(null);
                 button.setResizable(false);
 
                 button.setVisible(true);
-                button.add(new gameCode());
+                button.add(new Board());
 
             }
         });
