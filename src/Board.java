@@ -1,3 +1,5 @@
+package snakeGame;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -9,9 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.swing.Timer;
+import javax.swing.*;
 
 
 public class Board extends JPanel implements ActionListener {
@@ -20,15 +20,20 @@ public class Board extends JPanel implements ActionListener {
     private final int B_HEIGHT = 299;
     private final int DOT_SIZE = 10;
     private final int ALL_DOTS = 900;
-    private final int RAND_POS = 29;
+    private final int RAND_POS = 25;
     private final int DELAY = 85;
+    private int points = 0;
 
     private final int x[] = new int[ALL_DOTS];
     private final int y[] = new int[ALL_DOTS];
 
     private int dots;
+
     private int apple_x;
     private int apple_y;
+
+
+    private JLabel score = new JLabel(String.valueOf(dots));
 
     private boolean leftDirection = false;
     private boolean rightDirection = true;
@@ -49,7 +54,7 @@ public class Board extends JPanel implements ActionListener {
     private void initBoard() {
 
         addKeyListener(new TAdapter());
-        setBackground(Color.black);
+        setBackground(Color.white);
         setFocusable(true);
 
         setPreferredSize(new Dimension(B_WIDTH, B_HEIGHT));
@@ -60,13 +65,13 @@ public class Board extends JPanel implements ActionListener {
     private void loadImages() {
 
 
-        ImageIcon iid = new ImageIcon("src/resources1/dot.png");
+        ImageIcon iid = new ImageIcon("src/resources1/head.png");
         ball = iid.getImage();
 
         ImageIcon iia = new ImageIcon("src/resources1/apple.png");
          apple = iia.getImage();
 
-         ImageIcon iih = new ImageIcon("src/resources1/head.png");
+         ImageIcon iih = new ImageIcon("src/resources1/dot.png");
         head = iih.getImage();
     }
 
@@ -120,7 +125,7 @@ public class Board extends JPanel implements ActionListener {
         Font small = new Font("Helvetica", Font.BOLD, 14);
         FontMetrics metr = getFontMetrics(small);
 
-        g.setColor(Color.white);
+        g.setColor(Color.black);
         g.setFont(small);
         g.drawString(msg, (B_WIDTH - metr.stringWidth(msg)) / 2, B_HEIGHT / 2);
     }
@@ -130,7 +135,9 @@ public class Board extends JPanel implements ActionListener {
         if ((x[0] == apple_x) && (y[0] == apple_y)) {
 
             dots++;
+            points++;
             locateApple();
+            score.setText(String.valueOf(points));
         }
     }
 
@@ -217,25 +224,25 @@ public class Board extends JPanel implements ActionListener {
 
             int key = e.getKeyCode();
 
-            if ((key == KeyEvent.VK_LEFT) && (!rightDirection)) {
+            if ((key == KeyEvent.VK_A) && (!rightDirection)) {
                 leftDirection = true;
                 upDirection = false;
                 downDirection = false;
             }
 
-            if ((key == KeyEvent.VK_RIGHT) && (!leftDirection)) {
+            if ((key == KeyEvent.VK_D) && (!leftDirection)) {
                 rightDirection = true;
                 upDirection = false;
                 downDirection = false;
             }
 
-            if ((key == KeyEvent.VK_UP) && (!downDirection)) {
+            if ((key == KeyEvent.VK_W) && (!downDirection)) {
                 upDirection = true;
                 rightDirection = false;
                 leftDirection = false;
             }
 
-            if ((key == KeyEvent.VK_DOWN) && (!upDirection)) {
+            if ((key == KeyEvent.VK_S) && (!upDirection)) {
                 downDirection = true;
                 rightDirection = false;
                 leftDirection = false;

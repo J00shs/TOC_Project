@@ -1,3 +1,5 @@
+package snakeGame;
+
 import javax.swing.*;
 /*
 GameFrame defines the WINDOW of the game.
