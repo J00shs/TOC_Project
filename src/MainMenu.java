@@ -1,3 +1,5 @@
+package snakeGame;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -49,6 +51,20 @@ public class MainMenu extends JPanel {
             }
         });
 
+        howTo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                howToPlayButton button = new howToPlayButton();
+                button.setTitle("How to Play");
+                button.setSize(700, 500);
+                button.setLocationRelativeTo(null);
+                button.setResizable(false);
+
+                button.setVisible(true);
+                button.add(new howToPlayMenu());
+            }
+        });
+
         gbc.weighty = 1;
         add(deButtons,gbc); //Add the buttons to the window
 
@@ -59,5 +75,9 @@ public class MainMenu extends JPanel {
 //An empty class that used to hold the window for the actual game
 //DO NOT DELETE!
  class startGameButton extends JFrame {
+
+}
+
+class howToPlayButton extends JFrame {
 
 }
