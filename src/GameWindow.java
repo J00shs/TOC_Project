@@ -1,6 +1,8 @@
-package snakeGame;
+
 
 import javax.swing.*;
+import java.awt.*;
+
 /*
 GameFrame defines the WINDOW of the game.
 It uses the JFrame Library.
@@ -18,6 +20,7 @@ public class GameWindow extends JFrame {
         this.pack();
         this.setSize(700,500);//Sets the window size
         this.setLocationRelativeTo(null);//Centers the window to the middle of the screen.
+
         this.setVisible(true); //Makes the window visible to the user.
 
 
